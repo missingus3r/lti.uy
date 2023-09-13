@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    transition: background-color 0.5s ease;
+    color: var(--text-color);
+  }
+  
+  button {
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 3%;
+  }
+  
+  button:hover {
+    background-color: var(--button-hover-color);
+  }
+  
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--form-color);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    transition: background-color 0.5s ease;
+    border-radius: 3%;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  /* tema oscuro */
+  
+  html[data-theme='dark'] {
+    --bg-color: #292c3f;
+    --form-color: #444;
+    --text-color: #eee;
+    --button-color: #666;
+    --button-hover-color: #555;
+  }
+  
+  /* tema claro */
+  
+  html[data-theme='light'] {
+    --bg-color: #eee;
+    --form-color: #fff;
+    --text-color: #333;
+    --button-color: #ccc;
+    --button-hover-color: #ddd;
+  }

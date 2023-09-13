@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>prealpha-1.0</title>
+    <style>
+        /* Estilos CSS para el contenedor de loading */
+        .loading-container {
+            border-radius: 15px;
+            position: fixed;
+            top: 90%;
+            left: 85%;
+            width: 10%;
+            height: 6%;
+            background-color: rgba(70, 135, 255, 0.8); /* Fondo semitransparente */
+            z-index: 1000; /* Asegura que esté en la parte superior */
+            display: flex; /* Usar display flex para alinear horizontal y verticalmente */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: center; /* Centrar horizontalmente */
+        }
+
+        /* Estilos CSS para centrar el texto de carga */
+        .loading-text {
+            font-family: 'Arial';
+            text-align: center;
+            align-content: center;
+            color: white;
+            padding: 5px;
+            font-size: 15;
+        }
+
+        /* Estilos CSS para centrar el icono de carga horizontal y verticalmente */
+        .loading-icon {
+            /* Estilos para el icono de carga (puedes personalizar estos estilos) */
+            border: 4px solid #f3f3f3; /* Círculo exterior */
+            border-top: 4px solid #3498db; /* Círculo interior de color */
+            border-radius: 50%; /* Hace que el círculo sea redondo */
+            width: 10px;
+            height: 10px;
+            animation: spin 2s linear infinite; /* Agrega una animación de giro */
+            margin: 0 auto; /* Centra horizontalmente */
+        }
+
+        /* Animación para el giro del icono de carga */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+    <div class="loading-container" id="loading_cargandoDatos">
+        <div class="loading-icon" id="loading-icon"></div>
+        <div class="loading-text" id="loading-text">Cargando datos...</div>
+    </div>
+</body>
+</html>

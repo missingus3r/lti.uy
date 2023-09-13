@@ -1,0 +1,37 @@
+<html>
+    {% load static %}
+
+    <head>
+        <title>prealpha-1.0</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <div id="theme-switcher">
+            <button id="switch_theme">Switch theme</button>
+        </div>
+        <form method="post" hx-post="{% url 'signin:ajax_login' %}" hx-swap="outerHTML">
+            {% csrf_token %}
+            <label>Username: 
+            <input type="text" name="username"></label><br>
+            <label>Password: 
+            <input type="password" name="password"></label>
+            <button type="submit">Login</button>
+        </form>
+        <script>
+            var theme = localStorage.getItem('theme') || 'dark'; // default to light
+
+            var switchTheme = function() {
+              theme = theme === 'dark' ? 'light' : 'dark';
+              localStorage.setItem('theme', theme);
+              document.documentElement.setAttribute("data-theme", theme);
+            }
+          
+            document.getElementById('switch_theme').addEventListener('click', function() {
+              switchTheme();
+            });
+          
+            switchTheme();
+        </script>
+    </body>
+</html>

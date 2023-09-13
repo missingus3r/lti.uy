@@ -1,0 +1,73 @@
+<html>
+    {% load static %}
+
+    <head>
+        <title>prealpha-1.0</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <div id="theme-switcher">
+            <button id="switch_theme">Switch theme</button>
+        </div>
+        <!-- llama loading html -->
+        {% include 'signin/loading.html' %}
+        <!-- Contenido de datos que se mostrarán después de cargarlos -->
+        <div class="content" style="background-color: #40bb2a;" id="json">
+            {% for result in data.results %}
+                <!-- Mostrar datos aquí -->
+                <p>{{ result }}</p>
+            {% endfor %}
+        </div>
+        
+        <script>
+            var theme = localStorage.getItem('theme') || 'light'; // default to light
+
+            var switchTheme = function() {
+              theme = theme === 'dark' ? 'light' : 'dark';
+              localStorage.setItem('theme', theme);
+              document.documentElement.setAttribute("data-theme", theme);
+            }
+          
+            document.getElementById('switch_theme').addEventListener('click', function() {
+              switchTheme();
+            });
+          
+            switchTheme();
+        </script>
+        <script>
+            // Función para cargar los datos de 'home(request)' en segundo plano
+            async function cargarDatos() {
+                try {
+                    const response = await fetch('home/');
+                    const data = await response.text();
+                    // Actualiza el contenido de 'home-content' con el resultado de 'home/'
+                    const homeContent = document.getElementById('json');
+                    homeContent.innerHTML = data;
+                    // Procesa los datos y actualiza la página según sea necesario
+                    // Modifica el texto a "Datos cargados"
+                    const loadingText = document.getElementById('loading-text');
+                    loadingText.textContent = 'Datos cargados';
+                    
+                    // Oculta el icono de carga
+                    const loadingIcon = document.getElementById('loading-icon');
+                    loadingIcon.style.display = 'none';
+                    
+                    // Cambia el color de fondo del contenedor a verde
+                    const loadingContainer = document.getElementById('loading_cargandoDatos');
+                    loadingContainer.style.backgroundColor = 'black';
+
+                    setTimeout(function() {
+                    const content = document.getElementById('loading_cargandoDatos');
+                    content.style.display = 'none';
+                     }, 6000); // 5000 milisegundos = 5 segundos
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        
+            // Llama a la función de carga de datos después de que la página se haya cargado
+            window.addEventListener('load', cargarDatos);
+        </script>
+    </body>
+</html>
