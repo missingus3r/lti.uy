@@ -27,6 +27,6 @@ async def login_view(request):
             return HttpResponse("Invalid username or password.")
 
 async def home():
-    results = await hub.main('mariano.collazo', 'poiuyt123Q.')
+    results = await hub.main('', '')
     data = {'results': results}  
     return JsonResponse(data)
