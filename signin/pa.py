@@ -5,8 +5,8 @@ from time import sleep
 import json
 
 async def main():
-    user = 'mariano.collazo'
-    passwd = 'poiuyt123Q.'
+    user = 'user'
+    passwd = 'password'
     browser = await launch(headless=True)
     page = await browser.newPage()
 
