@@ -8,8 +8,8 @@ passwd = sys.argv[2]
 
 async def main():
     # Launch the browser
-    user = 'mariano.collazo'
-    passwd = 'poiuyt123Q.'
+    user = 'user'
+    passwd = 'password'
     browser = await launch(headless=True)
 
     # Open a new page
