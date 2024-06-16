@@ -7,7 +7,7 @@ pinecone.init(
 	environment='gcp-starter'      
 )      
 
-openai.api_key = "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"
+openai.api_key = "API"
 
 def create_embedding(input_text):
     response = openai.Embedding.create(
