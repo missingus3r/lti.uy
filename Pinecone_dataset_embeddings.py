@@ -3,7 +3,7 @@ import openai
 import pandas as pd
 
 pinecone.init(      
-	api_key='9e27e17a-bdfe-4f14-9e0f-e7e581695e39',      
+	api_key='api',      
 	environment='gcp-starter'      
 )      
 
